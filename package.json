@@ -7,5 +7,10 @@
   "license": "MIT",
   "scripts": {
     "start": "coffee index.coffee"
+  },
+  "dependencies": {
+    "request": "~2.34.0",
+    "underscore": "~1.6.0",
+    "querystring": "~0.2.0"
   }
 }
