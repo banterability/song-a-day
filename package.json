@@ -1,0 +1,8 @@
+{
+  "name": "song-a-day",
+  "version": "0.0.0",
+  "description": "A song a day, 1m1s on January 1, 12m31s on December 31",
+  "main": "index.coffee",
+  "author": "Jeff Long",
+  "license": "MIT"
+}
