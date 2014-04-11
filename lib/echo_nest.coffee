@@ -1,6 +1,7 @@
 qs = require 'querystring'
 request = require 'request'
 {extend} = require 'underscore'
+{getDurationFromDate} = require './helpers'
 
 
 class EchoNest
@@ -22,6 +23,20 @@ class EchoNest
 
     request requestOptions, (err, res, body) ->
       cb err, body
+
+  songSearch: (options, cb) ->
+    @fetch 'song/search', options, cb
+
+  findSongForToday: (cb) ->
+    duration = getDurationFromDate new Date()
+    options =
+      results: 10
+      sort: 'song_hotttnesss-desc'
+      bucket: ['audio_summary']
+      max_duration: duration + 0.499
+      min_duration: duration - 0.5
+
+    @songSearch options, cb
 
 
 module.exports = EchoNest
