@@ -1,6 +1,6 @@
 qs = require 'querystring'
 request = require 'request'
-{extend} = require 'underscore'
+{extend, isDate} = require 'underscore'
 {getDurationFromDate} = require './helpers'
 
 
@@ -27,8 +27,9 @@ class EchoNest
   songSearch: (options, cb) ->
     @fetch 'song/search', options, cb
 
-  findSongForToday: (cb) ->
-    duration = getDurationFromDate new Date()
+  findSongForDate: (date, cb) ->
+    throw new Error "Must specify a valid date" unless isDate date
+    duration = getDurationFromDate date
     options =
       results: 10
       sort: 'song_hotttnesss-desc'
